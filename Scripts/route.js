@@ -1,6 +1,6 @@
 "use strict";
 
-const route = (name,htmlName,defaultRoute) => {
+function Route (name,htmlName,defaultRoute) {
 
     try {
         
@@ -20,16 +20,16 @@ const route = (name,htmlName,defaultRoute) => {
 }
 
 
-route.prototype = {
+Route.prototype = {
     name:undefined,
     htmlName:undefined,
     default:undefined,
-    constructor: (name,htmlName,defaultRoute)=> {
+    constructor: function(name,htmlName,defaultRoute){
         this.name = name;
         this.htmlName = htmlName;
         this.default = defaultRoute;
     },
-    isActiveRoute: (hashedPath) => {
+    isActiveRoute: function(hashedPath) {
         return hashedPath.replace('#','') === this.name;
     }
 }

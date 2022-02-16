@@ -1,7 +1,7 @@
 "use strict";
 
 
-const Router = (routes) => {
+function Router (routes) {
 
     try {
         
@@ -12,7 +12,7 @@ const Router = (routes) => {
         }
 
         this.constructor(routes);
-        this.Init();
+        this.init();
 
     } catch (error) {
         console.log(error);
@@ -23,8 +23,9 @@ const Router = (routes) => {
 Router.prototype = {
         routes: undefined,
         rootElem: undefined,
-        constructor: (routes) => {
+        constructor: function(routes) {
             this.routes = routes;
+            this.rootElem = document.getElementById('app');
         },
         init: function() {
             let r = this.routes;
@@ -47,11 +48,27 @@ Router.prototype = {
             } else {
                 for(var i=0, length = r.length; i<length;i++){
                     let route = r[i];
-                    if (route.isActiveRoute(window.location.hash.substr(1))){
+                    if (route.default){
                         scope.goToRoute(route.htmlName);
                     }
                 }
             }
 
+        },
+        goToRoute: function(htmlName){
+            (function(scope){
+
+                let url = 'Views/' + htmlName;
+                let xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function(){
+                    if (this.readyState === 4 && this.status ===200){
+                        scope.rootElem.innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open('GET',url,true);
+                xhttp.send();
+
+            })(this);
         }
 }
