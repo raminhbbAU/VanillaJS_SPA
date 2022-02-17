@@ -1,6 +1,6 @@
 "use strict";
 
-function Route (name,htmlName,defaultRoute) {
+export function Route (name,htmlName,defaultRoute) {
 
     try {
         

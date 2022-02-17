@@ -1,7 +1,7 @@
 "use strict";
 
 
-function Router (routes) {
+export function Router (routes) {
 
     try {
         
