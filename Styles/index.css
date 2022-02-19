@@ -1,12 +1,15 @@
-* {
+/* * {
     margin: 0 !important;
     padding: 0 !important;
-}
+} */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -19,11 +22,22 @@ a:hover {
     color: #FFE0B2;
 }
 
+#app {
+    height: 100vh;   
+    /* background-color: red; */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #0D47A1;
+    box-shadow: 2px 4px #888888;
+}
+
 .app_header {
-    height: 10%;
-    height: max-content; 
+    height: 70px;
     width: 100%;
     background-color: #0D47A1;
+    margin: 0;
+    padding: 3px;
 }
 
 .app_header_title {
