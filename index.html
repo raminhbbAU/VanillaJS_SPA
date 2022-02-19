@@ -4,31 +4,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPA with VanillaJs</title>
+    <link rel="stylesheet" href="./styles/index.css" />
 </head>
 <body>
-        <header>
-            <nav>
-                This is header content
-            </nav>
-            <div>
+        <header class="app_header">
+            <div class="app_header_title">
+                SPA architecture with pure vanillaJS
+            </div>
+            <div class="app_header_menu">
                 <ul>
-                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Users">Users</a></li>
+                    <li><a href="#Repositories">Repositories</a></li>
                     <li><a href="#About">About</a></li>
                 </ul>
             </div>
         </header>
+
         <section>
             <div id="app">
 
             </div>
         </section>
-        <footer>
-            this is footer content
+
+        <button onclick="testAPPJS()">testAPPJS</button>
+
+        <footer class="app_footer">
+            <span>
+                made with ❤️ by RaminHbb. This project is licensed under the terms of the MIT license.
+            </span>
+            <span><a href="https://github.com/raminhbbAU/VanillaJS_SPA">Source Code</a></span>        
         </footer>
 
-        <!-- <script src="./Scripts/route.js"></script> -->
-        <!-- <script src="./Scripts/router.js"></script> -->
-        <script type="module" src="./Scripts/routeModule.js"></script>
+        <script type="module" src="./Scripts/route/routeModule.js"></script>
         <script type="module" src="./app.js"></script>
+
 </body>
 </html>

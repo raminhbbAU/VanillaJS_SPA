@@ -7,7 +7,8 @@ import { Router } from "./router.js";
 export const routingModuleInitilization = () => {
     
     let router = new Router([
-        new Route('Home','home.html',true),
+        new Route('Users','userList.html',true),
+        new Route('Repositories','Repositories.html'),
         new Route('About','about.html')
     ])
 
