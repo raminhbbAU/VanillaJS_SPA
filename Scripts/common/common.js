@@ -1,4 +1,19 @@
 
+const loadHTML = (htmlName,path='Views/',callback) => {
+
+    let url = path + htmlName;
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function(){
+        if (this.readyState === 4 && this.status ===200){
+            callback(this.responseText)
+        }
+    };
+    xhttp.open('GET',url,true);
+    xhttp.send();
+
+}
+
 const bindHTML = (html, dest, append=false,data=null) => {
 
     // if no append is requested, clear the target element
@@ -33,7 +48,7 @@ const bindHTML = (html, dest, append=false,data=null) => {
 
 }
 
-const bindComponent = (html, dest, append=false,data=null) => {
+const bindComponent = (name,html, dest, append=false,data=null,clickCallback) => {
 
     // if no append is requested, clear the target element
     if(!append) dest.innerHTML = '';
@@ -42,7 +57,21 @@ const bindComponent = (html, dest, append=false,data=null) => {
     let container = document.createElement('div');
     container.innerHTML = html;
 
-    if (data) container.setAttribute('data-json',JSON.stringify(data))
+    switch (name) {
+        case 'UserThumbnail.html':
+            bindUserThumbnail(container,data,(res)=>{
+                clickCallback(res);
+            });
+            break;  
+        case 'PageNavigation.html':
+            bindPageNavigation(container,(res)=>{
+                    clickCallback(res);
+                });
+                break;     
+        default:
+            break;
+    }
+        
 
     // get all child elements and clone them in the target element
     dest.appendChild(container);
@@ -67,19 +96,42 @@ const bindComponent = (html, dest, append=false,data=null) => {
 
 }
 
-const loadHTML = (htmlName,path='Views/',callback) => {
+const bindUserThumbnail = (container,data,clickCallback) => {
 
-    let url = path + htmlName;
-    let xhttp = new XMLHttpRequest();
+    let parentDiv = container.getElementsByClassName('userThumb_parentDiv')[0];
+    parentDiv.setAttribute('data-id',data.id)
+    parentDiv.setAttribute('data-avatar',data.avatar_url)
+    parentDiv.setAttribute('data-login',data.login)
 
-    xhttp.onreadystatechange = function(){
-        if (this.readyState === 4 && this.status ===200){
-            callback(this.responseText)
-        }
-    };
-    xhttp.open('GET',url,true);
-    xhttp.send();
+    let avatar = container.getElementsByClassName('userThumb_avatar')[0];
+    avatar.src = data.avatar_url
+
+    let fullName = container.getElementsByClassName('userThumb_fullName')[0];
+    fullName.innerText  = data.login;
+
+    parentDiv.addEventListener('click', (e) => {
+        clickCallback(data);
+    })
 
 }
+
+const bindPageNavigation = (container,clickCallback) => {
+
+    let parentDiv = container.getElementsByClassName('pageNavigation_parentDiv')[0];
+
+
+    let next = container.getElementsByClassName('pageNavigation_next')[0];
+    let prev = container.getElementsByClassName('pageNavigation_prev')[0];
+
+    next.addEventListener('click', (e) => {
+        clickCallback(true);
+    })
+
+    prev.addEventListener('click', (e) => {
+        clickCallback(false);
+    })
+
+}
+
 
 export {bindHTML,loadHTML,bindComponent}

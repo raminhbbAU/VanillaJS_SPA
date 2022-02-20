@@ -23,13 +23,14 @@ a:hover {
 }
 
 #app {
-    height: 100vh;   
+     height: fit-content;
     /* background-color: red; */
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #0D47A1;
     box-shadow: 2px 4px #888888;
+    padding-bottom: 40px;
 }
 
 .app_header {
@@ -61,5 +62,68 @@ a:hover {
     width: 100%;
     background-color: #424242;
     color: #FAFAFA;
+    text-align: center;
+}
+
+
+/* UserList */
+#UserList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#userPageheader {
+    margin-bottom: 40px;
+    display: block;
+}
+
+#userPageSearch{
+    float: left ;
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.userPageNavigation{
+    display: inline;
+    float: right;
+    font-size: medium;
+    font-weight:bolder;
+}
+
+#userPagefooter {
+    margin-bottom: 40px;
+    display: block;
+}
+
+.userThumb_parentDiv {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    /* align-content: center; */
+    /* text-align: center; */
+    margin: 8px;
+    border: 1px;
+    max-width: 90px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.userThumb_avatar{
+    display: block;
+    width: 85px;
+    height: 85px;
+    padding: 3px;
+    margin-bottom: 3px;
+}
+
+.userThumb_fullName{
+    font-size: small;
+    font-weight:bold;
+    display: inline-block;
+    width: 85px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    padding: 3px;
     text-align: center;
 }
