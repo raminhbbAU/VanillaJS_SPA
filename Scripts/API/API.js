@@ -5,8 +5,12 @@ const getUserList = async(userName,perPage=20,pageindex=1) => {
     return await fetch(apiPath + `search/users?per_page=${perPage}&page=${pageindex}&q=fullname:${userName}`)
 }
 
-const getUserRepositories = async(username,perPage=5,pageindex=1) => {
-    return await fetch(apiPath + `users/${username}/repos?per_page=${perPage}&page=${pageindex}&sort=${repos_sort}`)
+const getUserifno = async(userName) => {
+    return await fetch(apiPath + `users/${userName}`)
 }
 
-export {getUserList,getUserRepositories}
+const getUserRepositories = async(userName,perPage=5,pageindex=1) => {
+    return await fetch(apiPath + `users/${userName}/repos?per_page=${perPage}&page=${pageindex}&sort=${repos_sort}`)
+}
+
+export {getUserList,getUserifno,getUserRepositories}

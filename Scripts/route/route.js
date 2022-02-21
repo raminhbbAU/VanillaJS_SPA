@@ -30,6 +30,13 @@ Route.prototype = {
         this.default = defaultRoute;
     },
     isActiveRoute: function(hashedPath) {
-        return hashedPath.replace('#','') === this.name;
+        let value = hashedPath.replace('#','');
+        if (value.includes('/') ===true)
+        {
+            value = value.split('/')[0]
+        }
+        
+
+        return value === this.name;
     }
 }

@@ -68,6 +68,16 @@ const bindComponent = (name,html, dest, append=false,data=null,clickCallback) =>
                     clickCallback(res);
                 });
                 break;     
+        case 'UserMoreInfo.html':
+            bindUserMoreInfo(container,data,(res)=>{
+                clickCallback(res);
+            });
+            break;
+        case 'RepositoryInfo.html':
+            bindRepositoryInfo(container,data,(res)=>{
+                clickCallback(res);
+            });
+            break;    
         default:
             break;
     }
@@ -108,6 +118,41 @@ const bindUserThumbnail = (container,data,clickCallback) => {
 
     let fullName = container.getElementsByClassName('userThumb_fullName')[0];
     fullName.innerText  = data.login;
+
+    parentDiv.addEventListener('click', (e) => {
+        clickCallback(data);
+    })
+
+}
+
+const bindUserMoreInfo = (container,data,clickCallback) => {
+
+    let parentDiv = container.getElementsByClassName('userMoreInfo_parentDiv')[0];
+    parentDiv.setAttribute('data-id',data.id)
+    parentDiv.setAttribute('data-avatar',data.avatar_url)
+    parentDiv.setAttribute('data-login',data.login)
+
+    let bio = container.getElementsByClassName('userMoreInfo_bio')[0];
+    bio.innerText  = data.bio;
+
+    parentDiv.addEventListener('click', (e) => {
+        clickCallback(data);
+    })
+
+}
+
+const bindRepositoryInfo = (container,data,clickCallback) => {
+
+    let parentDiv = container.getElementsByClassName('repositoryInfo_parentDiv')[0];
+    parentDiv.setAttribute('data-id',data.id)
+    parentDiv.setAttribute('data-name',data.name)
+
+    let name = container.getElementsByClassName('repositoryInfo_name')[0];
+    name.innerHTML = `<a src=${data.url}>${data.name}</a>`;
+
+    let description = container.getElementsByClassName('repositoryInfo_description')[0];
+    description.innerText  = data.description;
+
 
     parentDiv.addEventListener('click', (e) => {
         clickCallback(data);

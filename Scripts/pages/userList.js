@@ -11,7 +11,7 @@ const pageInitilization = () => {
     let searchTextbox = document.getElementById('userNameSearchInput');
     searchTextbox.addEventListener('keyup', (event) => searchKeyupListener(event))
 
-    let navigationBoxes = document.getElementsByClassName('userPageNavigation');
+    let navigationBoxes = document.getElementsByClassName('PageNavigation');
     for( let i=0; i< navigationBoxes.length; i++){
 
         loadHTML('PageNavigation.html','Components/',(data)=>{
@@ -75,11 +75,17 @@ const showUsersOnThePage = (data) => {
         
         loadHTML('UserThumbnail.html','Components/',(data)=>{
             bindComponent('UserThumbnail.html',data,UserList,true,item,(res)=>{
-                console.log(res);
+                showUserDetail(res);
             });
         })
         
     })
+
+}
+
+const showUserDetail = (userInfo) => {
+
+    window.location.hash = '#UserDetail/' + userInfo.login
 
 }
 

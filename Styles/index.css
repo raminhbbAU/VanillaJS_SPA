@@ -84,7 +84,7 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.userPageNavigation{
+.PageNavigation{
     display: inline;
     float: right;
     font-size: medium;
@@ -126,4 +126,54 @@ a:hover {
     text-overflow: ellipsis;
     padding: 3px;
     text-align: center;
+}
+
+
+/* userMoreInfo */
+#userMoreInfo{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.userMoreInfo_parentDiv{
+    display: block;
+    background-color: rgb(255, 255, 255);
+    margin: 8px;
+    border: 1px;
+    height: 110px;
+    width: 300px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#userRepoList{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* repository list */
+.repositoryInfo_parentDiv{
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    padding: 5px;
+}
+
+.repositoryInfo_name{
+    display: block;
+    font-size: large;
+    font-weight: 800;
+    color: #0D47A1;
+    margin-bottom: 5px;
+}
+
+.repositoryInfo_description{
+    display: block;
+    font-size: small;
+    color: #424242;
+    font-weight: bold;
 }
