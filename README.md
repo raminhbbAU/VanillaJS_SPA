@@ -13,15 +13,15 @@ I made this project for my personal pursoses, if you interest to contribute, ple
 
 ### Project Structure
 
+- Components
+- Scripts
+    - API
+    - Common
     - Components
-    - Scripts
-        - API
-        - Common
-        - Components
-        - Pages
-        - Route
-    - Styles
-    - Views
+    - Pages
+    - Route
+- Styles
+- Views
 
 
 ### License
