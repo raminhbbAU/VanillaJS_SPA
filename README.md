@@ -1,4 +1,4 @@
-# GitHub_UserRepositories_PureJS
+# VanillaJS_SPA
 This is an open-source project to implement the SPA approach by pure VanillaJS. it fetches data from Github's API to search users and their repositories.
 
 
