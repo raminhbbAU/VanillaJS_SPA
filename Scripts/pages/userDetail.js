@@ -2,7 +2,7 @@ import { getUserifno,getUserRepositories } from "../API/API.js";
 import { bindComponent,loadHTML } from "../common/common.js";
 
 let userName='';
-const PerPage=20;
+const PerPage=8;
 let pageIndex=1;
 
 const pageInitilization = () => {
@@ -18,6 +18,14 @@ const pageInitilization = () => {
         })
 
     }
+
+
+    let userMoreInfoback = document.getElementById('userMoreInfoback');
+    userMoreInfoback.addEventListener('click', (e) => {
+        
+        window.location.hash = '#Users/'; //+ userName
+
+    })
 
 
     //load userinfo
@@ -110,15 +118,16 @@ const showWarning = (value) => {
 
 const pageNavigatorListener = (next) => {
 
-    // if (next)
-    // {
-    //     pageIndex+=1
-    //     searchUser()
-    // }
-    // else if (!next && pageIndex>1) {
-    //     pageIndex-=1
-    //     searchUser();
-    // }
+    if (next)
+    {
+        pageIndex+=1
+        fetchUserRepositories(userName)
+    }
+    else if (!next && pageIndex>1) {
+        pageIndex-=1
+        fetchUserRepositories(userName);
+    }
+    
 }
 
 pageInitilization();

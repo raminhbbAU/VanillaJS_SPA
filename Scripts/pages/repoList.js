@@ -1,4 +1,4 @@
-import { getUserList } from "../API/API.js";
+import { getRepositoryList } from "../API/API.js";
 import { bindComponent,loadHTML } from "../common/common.js";
 
 
@@ -23,13 +23,6 @@ const pageInitilization = () => {
 
     }
 
-    //load userinfo
-    // let userName = window.location.hash.replace('#Users/','')
-    // if (userName != '')
-    // {
-    //     searchValue=userName;
-    //     searchUser();
-    // }
 }
 
 const searchKeyupListener = (e) => {
@@ -41,16 +34,16 @@ const searchKeyupListener = (e) => {
         pageIndex=1;
         searchValue = e.target.value;
 
-        searchUser()
+        searchRepo()
     }
 
 }
 
-const searchUser = () => {
+const searchRepo = () => {
 
-    getUserList(searchValue,PerPage,pageIndex)
+    getRepositoryList(searchValue,PerPage,pageIndex)
         .then( (data) => data.json())
-        .then( (data) => showUsersOnThePage(data))
+        .then( (data) => showUserRepositories(data))
         .catch((error) => showWarning(error))    
   
 }
@@ -62,7 +55,7 @@ const showWarning = (value) => {
 
 }
 
-const showUsersOnThePage = (data) => {
+const showUserRepositories = (data) => {
 
     if (!data)
     {
@@ -76,24 +69,18 @@ const showUsersOnThePage = (data) => {
         return;
     }
 
-    let UserList = document.getElementById('UserList');
-    UserList.innerHTML=''
+    let userRepoList = document.getElementById('RepoList');
+    userRepoList.innerHTML=''
 
     data.items.map( (item) => {
         
-        loadHTML('UserThumbnail.html','Components/',(data)=>{
-            bindComponent('UserThumbnail.html',data,UserList,true,item,(res)=>{
-                showUserDetail(res);
+        loadHTML('RepositoryInfo.html','Components/',(data)=>{
+            bindComponent('RepositoryInfo.html',data,userRepoList,true,item,(res)=>{
+                // TODO: click on the repository
             });
         })
         
     })
-
-}
-
-const showUserDetail = (userInfo) => {
-
-    window.location.hash = '#UserDetail/' + userInfo.login
 
 }
 
@@ -102,11 +89,11 @@ const pageNavigatorListener = (next) => {
     if (next)
     {
         pageIndex+=1
-        searchUser()
+        searchRepo()
     }
     else if (!next && pageIndex>1) {
         pageIndex-=1
-        searchUser();
+        searchRepo();
     }
 }
 

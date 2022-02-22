@@ -78,7 +78,7 @@ a:hover {
     display: block;
 }
 
-#userPageSearch{
+.SearchPanel{
     float: left ;
     display: inline;
     margin-bottom: 10px;
@@ -176,4 +176,11 @@ a:hover {
     font-size: small;
     color: #424242;
     font-weight: bold;
+}
+
+
+/* RepoList page */
+#repositoryPageHeader {
+    margin-bottom: 40px;
+    display: block;
 }

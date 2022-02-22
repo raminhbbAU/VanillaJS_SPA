@@ -10,7 +10,6 @@ export const routingModuleInitilization = () => {
         new Route('Users','userList.html',true),
         new Route('UserDetail','userDetail.html'),
         new Route('Repositories','Repositories.html'),
-        new Route('About','about.html')
     ])
 
 }
